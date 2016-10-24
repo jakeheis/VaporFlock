@@ -19,8 +19,11 @@ public class Stop: ScheduledTask {
     public let scheduledTimes: [ScheduleTime] = [.before("deploy:build")]
     
     public func run(on server: Server) throws {
-        let pid = try findServerPid(on: server)
-        try server.execute("kill -9 \(pid)")
+        if let pid = try findServerPid(on: server) {
+            try server.execute("kill -9 \(pid)")
+        } else {
+            print("Vapor not running")
+        }
     }
 }
 
