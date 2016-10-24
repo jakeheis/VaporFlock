@@ -33,7 +33,7 @@ public class Start: ScheduledTask {
     
     public func run(on server: Server) throws {
         print("Starting Vapor")
-        try server.execute("\(Paths.executable)")
+        try server.execute("nohup \(Paths.executable) > /dev/null 2>&1 &")
     }
 }
 
@@ -42,7 +42,6 @@ public class List: ScheduledTask {
     public let scheduledTimes: [ScheduleTime] = [.after("vapor:start")]
     
     public func run(on server: Server) throws {
-        
         if let pid = try findServerPid(on: server) {
             print("Vapor running on \(pid)")
         } else {
