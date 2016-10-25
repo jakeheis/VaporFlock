@@ -2,21 +2,17 @@ import Foundation
 import Flock
 
 extension Flock {
-    public static let Vapor = VaporCluster()
-}
-
-public class VaporCluster: Cluster {
-    public let name = "vapor"
-    public let tasks: [Task] = [
-        Stop(),
-        Start(),
-        List()
+    public static let Vapor: [Task] = [
+        StopTask(),
+        StartTask(),
+        ListTask()
     ]
 }
 
-public class Stop: ScheduledTask {
+public class StopTask: Task {
     public let name = "stop"
-    public let scheduledTimes: [ScheduleTime] = [.before("deploy:build")]
+    public let namespace = "vapor"
+    public let hookTimes: [HookTime] = [.before("deploy:build")]
     
     public func run(on server: Server) throws {
         if let pid = try findServerPid(on: server) {
@@ -27,19 +23,20 @@ public class Stop: ScheduledTask {
     }
 }
 
-public class Start: ScheduledTask {
+public class StartTask: Task {
     public let name = "start"
-    public let scheduledTimes: [ScheduleTime] = [.after("deploy:build")]
+    public let namespace = "vapor"
+    public let hookTimes: [HookTime] = [.after("deploy:build")]
     
     public func run(on server: Server) throws {
         print("Starting Vapor")
         try server.execute("nohup \(Paths.executable) > /dev/null 2>&1 &")
+        try invoke("vapor:list")
     }
 }
 
-public class List: ScheduledTask {
+public class ListTask: Task {
     public let name = "list"
-    public let scheduledTimes: [ScheduleTime] = [.after("vapor:start")]
     
     public func run(on server: Server) throws {
         if let pid = try findServerPid(on: server) {
