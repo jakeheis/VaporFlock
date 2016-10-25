@@ -14,7 +14,7 @@ let vapor = "vapor"
 public class StopTask: Task {
     public let name = "stop"
     public let namespace = vapor
-    public let hookTimes: [HookTime] = [.before("deploy:build")]
+    public let hookTimes: [HookTime] = [.before("deploy:link")]
     
     public func run(on server: Server) throws {
         if let pid = try findServerPid(on: server) {
@@ -28,7 +28,7 @@ public class StopTask: Task {
 public class StartTask: Task {
     public let name = "start"
     public let namespace = vapor
-    public let hookTimes: [HookTime] = [.after("deploy:build")]
+    public let hookTimes: [HookTime] = [.after("deploy:link")]
     
     public func run(on server: Server) throws {
         print("Starting Vapor")
