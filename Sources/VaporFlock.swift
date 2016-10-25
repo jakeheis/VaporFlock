@@ -9,9 +9,11 @@ extension Flock {
     ]
 }
 
+let vapor = "vapor"
+
 public class StopTask: Task {
     public let name = "stop"
-    public let namespace = "vapor"
+    public let namespace = vapor
     public let hookTimes: [HookTime] = [.before("deploy:build")]
     
     public func run(on server: Server) throws {
@@ -25,7 +27,7 @@ public class StopTask: Task {
 
 public class StartTask: Task {
     public let name = "start"
-    public let namespace = "vapor"
+    public let namespace = vapor
     public let hookTimes: [HookTime] = [.after("deploy:build")]
     
     public func run(on server: Server) throws {
@@ -37,6 +39,7 @@ public class StartTask: Task {
 
 public class ListTask: Task {
     public let name = "list"
+    public let namespace = vapor
     
     public func run(on server: Server) throws {
         if let pid = try findServerPid(on: server) {
