@@ -1,11 +1,11 @@
-import Foundation
 import Flock
+import Foundation
 
 extension Flock {
     public static let Vapor: [Task] = [
         StopTask(),
         StartTask(),
-        ListTask()
+        ProcessTask()
     ]
 }
 
@@ -37,13 +37,13 @@ public class StartTask: Task {
     }
 }
 
-public class ListTask: Task {
-    public let name = "list"
+public class ProcessTask: Task {
+    public let name = "process"
     public let namespace = vapor
     
     public func run(on server: Server) throws {
         if let pid = try findServerPid(on: server) {
-            print("Vapor running on \(pid)")
+            print("Vapor running as process \(pid)")
         } else {
             print("Vapor not running")
         }
