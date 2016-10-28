@@ -33,7 +33,7 @@ public class StartTask: Task {
     public func run(on server: Server) throws {
         print("Starting Vapor")
         try server.execute("nohup \(Paths.executable) > /dev/null 2>&1 &")
-        try invoke("vapor:list")
+        try invoke("vapor:process")
     }
 }
 
