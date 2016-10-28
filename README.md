@@ -3,12 +3,12 @@
 Automated deployment of your [Vapor](https://github.com/vapor/vapor) server using [Flock](https://github.com/jakeheis/Flock).
 
 ## Installation
-Add these lines to `deploy/FlockDependencies.json`:
+Add these lines to `config/deploy/FlockDependencies.json`:
 ```
 "dependencies" : [
   ...
   {
-    "name" : "https://github.com/jakeheis/VaporFlock",
+    "url" : "https://github.com/jakeheis/VaporFlock",
     "version": "0.0.1"
   }
 ]
