@@ -24,7 +24,7 @@ Flock.use(Flock.Vapor)
 ```
 ## Included tasks
 ```
-vapor:stop # Hooks .before("deploy:link")
-vapor:start # Hooks .after("deploy:link")
+vapor:stop     # Hooks .before("deploy:link")
+vapor:start    # Hooks .after("deploy:link")
 vapor:ps
 ```
