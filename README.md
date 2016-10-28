@@ -13,10 +13,18 @@ Add these lines to `deploy/FlockDependencies.json`:
   }
 ]
 ```
+In your `Flockfile` add:
+```swift
+import Flock
+import VaporFlock
 
+...
+
+Flock.use(Flock.Vapor)
+```
 ## Included tasks
 ```
-vapor:stop
-vapor:start
-vapor:list
+vapor:stop # Hooks .before("deploy:link")
+vapor:start # Hooks .after("deploy:link")
+vapor:process
 ```
