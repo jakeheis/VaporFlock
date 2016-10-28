@@ -5,7 +5,7 @@ extension Flock {
     public static let Vapor: [Task] = [
         StopTask(),
         StartTask(),
-        ProcessTask()
+        PsTask()
     ]
 }
 
@@ -33,12 +33,12 @@ public class StartTask: Task {
     public func run(on server: Server) throws {
         print("Starting Vapor")
         try server.execute("nohup \(Paths.executable) > /dev/null 2>&1 &")
-        try invoke("vapor:process")
+        try invoke("vapor:ps")
     }
 }
 
-public class ProcessTask: Task {
-    public let name = "process"
+public class PsTask: Task {
+    public let name = "ps"
     public let namespace = vapor
     
     public func run(on server: Server) throws {
