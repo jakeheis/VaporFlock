@@ -26,5 +26,5 @@ Flock.use(Flock.Vapor)
 ```
 vapor:stop # Hooks .before("deploy:link")
 vapor:start # Hooks .after("deploy:link")
-vapor:process
+vapor:ps
 ```
