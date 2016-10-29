@@ -25,9 +25,9 @@ Flock.use(Flock.Vapor)
 # Config
 These fields are open for customization in your `config/deploy/Always.swift` and related configuration files:
 ```swift
-extension Config {
-    public static var outputLog = "/dev/null"
-    public static var errorLog = "/dev/null"
+public extension Config {
+    static var outputLog = "/dev/null"
+    static var errorLog = "/dev/null"
 }
 ```
 If you set these variable to anything other than `/dev/null`, you'll likely want to turn off stdout bufferring to ensure log files are properly written to:
