@@ -1,17 +1,17 @@
 import Flock
 import Foundation
 
-extension Flock {
-    public static let Vapor: [Task] = [
+public extension Flock {
+    static let Vapor: [Task] = [
         StopTask(),
         StartTask(),
         PsTask()
     ]
 }
 
-extension Config {
-    public static var outputLog = "/dev/null"
-    public static var errorLog = "/dev/null"
+public extension Config {
+    static var outputLog = "/dev/null"
+    static var errorLog = "/dev/null"
 }
 
 let vapor = "vapor"
