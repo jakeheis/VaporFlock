@@ -2,15 +2,15 @@
 
 Automated deployment of your [Vapor](https://github.com/vapor/vapor) server using [Flock](https://github.com/jakeheis/Flock).
 
-## Installation
+# Installation
 Add these lines to `config/deploy/FlockDependencies.json`:
 ```
 "dependencies" : [
-  ...
-  {
-    "url" : "https://github.com/jakeheis/VaporFlock",
-    "version": "0.0.1"
-  }
+       ...
+       {
+           "url" : "https://github.com/jakeheis/VaporFlock",
+           "version": "0.0.1"
+       }
 ]
 ```
 In your `Flockfile` add:
@@ -22,9 +22,18 @@ import VaporFlock
 
 Flock.use(Flock.Vapor)
 ```
-## Included tasks
+# Config
+These fields are open for customization in your `config/deploy/Always.swift` and related configuration files:
+```swift
+extension Config {
+    public static var outputLog = "/dev/null"
+    public static var errorLog = "/dev/null"
+}
 ```
-vapor:stop     # Hooks .before("deploy:link")
-vapor:start    # Hooks .after("deploy:link")
-vapor:ps
+# Tasks
+```bash
+flock vapor:stop     # Hooks .before("deploy:link")
+flock vapor:start    # Hooks .after("deploy:link")
+flock vapor:ps
 ```
+`VaporFlock` hooks into the deploy process to automatically restart the server after the new release is built, so you should never have to call these tasks directly.
