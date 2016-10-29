@@ -10,8 +10,8 @@ extension Flock {
 }
 
 extension Config {
-    static var outputLog = "/dev/null"
-    static var errorLog = "/dev/null"
+    public static var outputLog = "/dev/null"
+    public static var errorLog = "/dev/null"
 }
 
 let vapor = "vapor"
