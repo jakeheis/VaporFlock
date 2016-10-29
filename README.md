@@ -30,6 +30,22 @@ extension Config {
     public static var errorLog = "/dev/null"
 }
 ```
+If you set these variable to anything other than `/dev/null`, you'll likely want to turn off stdout bufferring to ensure log files are properly written to:
+```swift
+// Sources/App/main.swift
+
+#if os(Linux)
+import Glibc
+#else
+import Darwin
+#endif
+import Vapor
+
+setbuf(stdout, nil)
+
+let drop = Droplet()
+...
+```
 # Tasks
 ```bash
 flock vapor:stop     # Hooks .before("deploy:link")
