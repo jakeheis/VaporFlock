@@ -20,7 +20,9 @@ import VaporFlock
 
 ...
 
+Flock.use(Flock.Deploy)
 Flock.use(Flock.Vapor)
+// Remove `Flock.use(Flock.Server)`
 ```
 # Tasks
 ```bash
