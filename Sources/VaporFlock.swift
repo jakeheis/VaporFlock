@@ -1,10 +1,10 @@
 import Flock
 
 public extension Flock {
-    static let Vapor: [Task] = SystemdTasks(provider: VaporSystemd()).createTasks()
+    static let Vapor: [Task] = SupervisordTasks(provider: VaporSupervisord()).createTasks()
 }
 
-class VaporSystemd: SystemdProvider {
+class VaporSupervisord: SupervisordProvider {
     let name = "vapor"
-    let serviceName = "vapor"
+    let programName = "vapor"
 }
