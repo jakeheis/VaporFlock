@@ -42,7 +42,7 @@ public extension Config {
     static var errorLog = "/var/log/supervisor/%%(program_name)s-%%(process_num)s.err"
 }
 ```
-In order to ensure, logging works correctly, you'll likely want to turn off output bufferring in `main.swift`:
+In order to ensure logging works correctly, you'll likely want to turn off output bufferring in `main.swift`:
 ```swift
 #if os(Linux)
 import Glibc
