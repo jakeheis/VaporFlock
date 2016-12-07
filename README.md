@@ -9,7 +9,7 @@ Add these lines to `config/deploy/FlockDependencies.json`:
        ...
        {
            "url" : "https://github.com/jakeheis/VaporFlock",
-           "version": "0.0.1"
+           "version": "0.0.3"
        }
 ]
 ```
