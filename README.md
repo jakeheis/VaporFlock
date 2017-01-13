@@ -36,10 +36,10 @@ flock vapor:status
 ```swift
 public extension Config {
     // Default value; resolved by Supervisord to something like /var/log/supervisor/vapor-0.out
-    static var outputLog = "/var/log/supervisor/%%(program_name)s-%%(process_num)s.out"
+    static var outputLog = "/var/log/supervisor/%(program_name)s-%(process_num)s.out"
     
     // Default value; resolved by Supervisord to something like /var/log/supervisor/vapor-0.err
-    static var errorLog = "/var/log/supervisor/%%(program_name)s-%%(process_num)s.err"
+    static var errorLog = "/var/log/supervisor/%(program_name)s-%(process_num)s.err"
 }
 ```
 In order to ensure logging works correctly, you'll likely want to turn off output bufferring in `main.swift`:
