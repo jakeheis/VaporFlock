@@ -5,6 +5,13 @@ public extension Flock {
 }
 
 class VaporSupervisord: SupervisordProvider {
-    let name = "vapor"
-    let programName = "vapor"
+    let taskNamespace = "vapor"
+    let supervisorCtlName = Config.supervisorCtlName ?? "vapor"
+    
+    func confFile(for server: Server) -> SupervisordConfFile {
+        var file = SupervisordConfFile(programName: supervisorCtlName)
+        file.command += " --env=\(Config.environment)"
+        return file
+    }
+    
 }
