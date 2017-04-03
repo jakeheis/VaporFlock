@@ -1,0 +1,30 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Flock",
+      "reason": null,
+      "repositoryURL": "https://github.com/jakeheis/Flock",
+      "version": "0.1.2"
+    },
+    {
+      "package": "Rainbow",
+      "reason": null,
+      "repositoryURL": "https://github.com/onevcat/Rainbow",
+      "version": "2.0.1"
+    },
+    {
+      "package": "Spawn",
+      "reason": null,
+      "repositoryURL": "https://github.com/jakeheis/Spawn",
+      "version": "0.0.5"
+    },
+    {
+      "package": "SwiftCLI",
+      "reason": null,
+      "repositoryURL": "https://github.com/jakeheis/SwiftCLI",
+      "version": "2.0.3"
+    }
+  ],
+  "version": 1
+}
